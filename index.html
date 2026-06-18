@@ -1,0 +1,937 @@
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRC International University - Admissions</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #2a3a8c);
+            color: white;
+            padding: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 2.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo p {
+            color: #b8d4ff;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info {
+            text-align: right;
+        }
+        
+        .contact-info p {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        nav {
+            background-color: #0f1c52;
+            padding: 12px 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+        
+        /* Main Content Sections */
+        section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            color: #1a2a6c;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ffcc00;
+            display: inline-block;
+        }
+        
+        /* Introduction Section */
+        .intro-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        
+        .intro-content p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        /* Campus Images */
+        .campus-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .campus-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        .campus-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .campus-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .campus-caption {
+            padding: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        
+        /* Links Section */
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .link-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .link-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .link-card a {
+            color: #1a2a6c;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .link-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* Registration Form */
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .form-section-title {
+            color: #1a2a6c;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-section-title i {
+            margin-right: 10px;
+            color: #ffcc00;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #1a2a6c;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 42, 108, 0.1);
+        }
+        
+        /* Payment Instructions */
+        .payment-box {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffcc00;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .payment-box h3 {
+            color: #d68910;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .payment-box h3 i {
+            margin-right: 10px;
+        }
+        
+        .payment-steps {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        
+        .payment-steps li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .important-note {
+            background-color: #ffeaea;
+            color: #c0392b;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 20px 0;
+            border-left: 4px solid #c0392b;
+        }
+        
+        .mobile-money-number {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 20px 0;
+        }
+        
+        /* Submit Button */
+        .submit-btn {
+            background: linear-gradient(to right, #1a2a6c, #2a3a8c);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 40px auto 0;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, #2a3a8c, #3a4a9c);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(26, 42, 108, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0f1c52;
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: #ffcc00;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #b8d4ff;
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2a3a8c;
+            color: #b8d4ff;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .mobile-money-number {
+                font-size: 1.4rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>TRC International University</h1>
+                <p>Excellence in Global Education Since 2005</p>
+            </div>
+            <div class="contact-info">
+                <p><i class="fas fa-phone-alt"></i> University Hotline: +256 703959773</p>
+                <p><i class="fas fa-envelope"></i> admissions@trc.ac.ug</p>
+                <p><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#campuses"><i class="fas fa-university"></i> Campuses</a></li>
+                <li><a href="#programs"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+                <li><a href="#admissions"><i class="fas fa-file-signature"></i> Admissions</a></li>
+                <li><a href="#contact"><i class="fas fa-address-book"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction Section -->
+        <section id="home">
+            <h2 class="section-title">Welcome to TRC International University</h2>
+            <div class="intro-content">
+                <p>TRC International University is a premier institution of higher learning dedicated to providing world-class education with a global perspective. Established in 2005, we have grown to become one of East Africa's most respected universities, with students from over 25 countries.</p>
+                <p>Our mission is to develop future leaders through innovative teaching, cutting-edge research, and a commitment to community service. We offer a wide range of undergraduate and postgraduate programs across various disciplines, all designed to meet international standards.</p>
+                <p>With state-of-the-art facilities, experienced faculty, and partnerships with universities worldwide, TRC International University provides an enriching educational experience that prepares students for success in an increasingly interconnected world.</p>
+                <p>We are proud of our diverse student body and inclusive campus community that celebrates different cultures, perspectives, and ideas.</p>
+            </div>
+        </section>
+
+        <!-- Campus Images Section -->
+        <section id="campuses">
+            <h2 class="section-title">Our Campuses</h2>
+            <div class="campus-gallery">
+                <div class="campus-card">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0&auto=format&fit=crop&w=800&q=80" alt="Main Campus Building" class="campus-img">
+                    <div class="campus-caption">
+                        <h3>Main Campus - Kampala</h3>
+                        <p>Our flagship campus with modern lecture halls, libraries, and research centers.</p>
+                    </div>
+                </div>
+                <div class="campus-card">
+                    <img src="https://images.unsplash.com/photo-1523059623039-a9ed027e7fad?ixlib=rb-4.0&auto=format&fit=crop&w=800&q=80" alt="Science Laboratory" class="campus-img">
+                    <div class="campus-caption">
+                        <h3>Science & Technology Complex</h3>
+                        <p>Equipped with advanced laboratories for engineering and medical sciences.</p>
+                    </div>
+                </div>
+                <div class="campus-card">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0&auto=format&fit=crop&w=800&q=80" alt="Student Residence" class="campus-img">
+                    <div class="campus-caption">
+                        <h3>Student Residence Halls</h3>
+                        <p>Safe and comfortable accommodation for our international students.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Important Links Section -->
+        <section id="links">
+            <h2 class="section-title">University Resources</h2>
+            <div class="links-container">
+                <div class="link-card">
+                    <a href="#"><i class="fas fa-book-open"></i> Academic Programs</a>
+                    <p>Explore our undergraduate and postgraduate degree offerings</p>
+                </div>
+                <div class="link-card">
+                    <a href="#"><i class="fas fa-calendar-alt"></i> Academic Calendar</a>
+                    <p>Important dates, semester schedules, and university events</p>
+                </div>
+                <div class="link-card">
+                    <a href="#"><i class="fas fa-hand-holding-usd"></i> Tuition & Fees</a>
+                    <p>Detailed breakdown of tuition costs and payment options</p>
+                </div>
+                <div class="link-card">
+                    <a href="#"><i class="fasfa-download"></i> Download Forms</a>
+                    <p>Application forms, clearance documents, and other resources</p>
+                </div>
+                <div class="link-card">
+                    <a href="#"><i class="fas fa-users"></i> Student Portal</a>
+                    <p>Access to grades, course materials, and university services</p>
+                </div>
+                <div class="link-card">
+                    <a href="#"><i class="fas fa-question-circle"></i> FAQs</a>
+                    <p>Answers to commonly asked questions about admissions</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Form Section -->
+        <section id="admissions">
+            <h2 class="section-title">Online Student Registration</h2>
+            
+            <div class="payment-box">
+                <h3><i class="fas fa-money-check-alt"></i> Registration Payment Instructions</h3>
+                <p>Before submitting your application, you must complete the non-refundable registration fee payment of <strong>UGX 50,000</strong> via mobile money.</p>
+                
+                <ol class="payment-steps">
+                    <li>Go to your mobile money menu on your phone</li>
+                    <li>Select "Send Money" or "Pay Bill" option</li>
+                    <li>Enter the university secretary's number: <strong>+256 703959773</strong></li>
+                    <li>Enter the amount: <strong>UGX 50,000</strong></li>
+                    <li>Use your name as the reference</li>
+                    <li>Complete the transaction and save the transaction ID</li>
+                    <li>Enter the transaction ID in the form below</li>
+                </ol>
+                
+                <div class="mobile-money-number">
+                    <i class="fas fa-mobile-alt"></i> Pay to: +256 703959773
+                </div>
+                
+                <div class="important-note">
+                    <i class="fas fa-exclamation-triangle"></i> IMPORTANT: Your registration will only be processed after we verify your payment. The registration fee is NON-REFUNDABLE. After successful submission, a unique student registration number will be automatically sent to your email within 24-48 hours.
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <form id="registrationForm" action="#" method="POST">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title"><i class="fas fa-user"></i> Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="required">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="required">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="middleName">Middle Name</label>
+                                <input type="text" id="middleName" name="middleName">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="required">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="required">Telephone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob" class="required">Date of Birth</label>
+                                <input type="date" id="dob" name="dob" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gender" class="required">Gender</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality" class="required">Nationality</label>
+                                <input type="text" id="nationality" name="nationality" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passport">Passport Number (International Students)</label>
+                                <input type="text" id="passport" name="passport">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address" class="required">Permanent Address</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Academic Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title"><i class="fas fa-graduation-cap"></i> Academic Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentCode" class="required">Proposed Student Code</label>
+                                <input type="text" id="studentCode" name="studentCode" placeholder="TRC2026-XXXX" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="program" class="required">Preferred Program</label>
+                                <select id="program" name="program" required>
+                                    <option value="">Select Program</option>
+                                    <option value="medicine">Bachelor of Medicine & Surgery</option>
+                                    <option value="engineering">Bachelor of Engineering</option>
+                                    <option value="business">Bachelor of Business Administration</option>
+                                    <option value="law">Bachelor of Laws</option>
+                                    <option value="it">Bachelor of Information Technology</option>
+                                    <option value="arts">Bachelor of Arts & Social Sciences</option>
+                                    <option value="science">Bachelor of Science</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="combination" class="required">Academic Combination</label>
+                                <select id="combination" name="combination" required>
+                                    <option value="">Select Combination</option>
+                                    <option value="PCM">Physics, Chemistry, Mathematics (PCM)</option>
+                                    <option value="PCB">Physics, Chemistry, Biology (PCB)</option>
+                                    <option value="MEG">Mathematics, Economics, Geography (MEG)</option>
+                                    <option value="BCA">Biology, Chemistry, Agriculture (BCA)</option>
+                                    <option value="HGL">History, Geography, Literature (HGL)</option>
+                                    <option value="DFM">Drama, Fine Art, Music (DFM)</option>
+                                    <option value="LEP">Law, Economics, Political Science (LEP)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="entryYear" class="required">Year of Entry</label>
+                                <select id="entryYear" name="entryYear" required>
+                                    <option value="">Select Year</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="previousSchool" class="required">Previous School/College</label>
+                            <input type="text" id="previousSchool" name="previousSchool" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="qualification" class="required">Highest Qualification</label>
+                                <input type="text" id="qualification" name="qualification" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="indexNumber">Examination Index Number</label>
+                                <input type="text" id="indexNumber" name="indexNumber">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Parent/Guardian Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title"><i class="fas fa-users"></i> Parent/Guardian Information</h3>
+                        
+                        <h4 style="color: #1a2a6c; margin: 20px 0 15px;">Father's Details</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fatherName" class="required">Father's Full Name</label>
+                                <input type="text" id="fatherName" name="fatherName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fatherOccupation">Father's Occupation</label>
+                                <input type="text" id="fatherOccupation" name="fatherOccupation">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fatherPhone">Father's Phone Number</label>
+                                <input type="tel" id="fatherPhone" name="fatherPhone">
+                            </div>
+                            <div class="form-group">
+                                <label for="fatherEmail">Father's Email</label>
+                                <input type="email" id="fatherEmail" name="fatherEmail">
+                            </div>
+                        </div>
+                        
+                        <h4 style="color: #1a2a6c; margin: 20px 0 15px;">Mother's Details</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="motherName" class="required">Mother's Full Name</label>
+                                <input type="text" id="motherName" name="motherName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="motherOccupation">Mother's Occupation</label>
+                                <input type="text" id="motherOccupation" name="motherOccupation">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="motherPhone">Mother's Phone Number</label>
+                                <input type="tel" id="motherPhone" name="motherPhone">
+                            </div>
+                            <div class="form-group">
+                                <label for="motherEmail">Mother's Email</label>
+                                <input type="email" id="motherEmail" name="motherEmail">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guardianAddress">Guardian's Address (if different from yours)</label>
+                            <textarea id="guardianAddress" name="guardianAddress" rows="2"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title"><i class="fas fa-credit-card"></i> Payment Verification</h3>
+                        
+                        <div class="important-note">
+                            <i class="fas fa-exclamation-circle"></i> You must complete the UGX 50,000 mobile money payment to +256 703959773 before filling this section.
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="transactionId" class="required">Mobile Money Transaction ID</label>
+                                <input type="text" id="transactionId" name="transactionId" required>
+                                <small style="color: #666; display: block; margin-top: 5px;">Enter the transaction ID from your mobile money payment</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="paymentDate" class="required">Payment Date</label>
+                                <input type="date" id="paymentDate" name="paymentDate" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="paymentMethod" class="required">Mobile Money Provider</label>
+                            <select id="paymentMethod" name="paymentMethod" required>
+                                <option value="">Select Provider</option>
+                                <option value="mtn">MTN Mobile Money</option>
+                                <option value="airtel">Airtel Money</option>
+                                <option value="africell">Africell Money</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title"><i class="fas fa-file-alt"></i> Additional Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="emergencyContact" class="required">Emergency Contact Person</label>
+                            <input type="text" id="emergencyContact" name="emergencyContact" required>
+                            <small style="color: #666; display: block; margin-top: 5px;">Name and relationship (e.g., John Doe - Uncle)</small>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="emergencyPhone" class="required">Emergency Contact Phone</label>
+                                <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="medicalConditions">Known Medical Conditions</label>
+                                <input type="text" id="medical Conditions" name="medicalConditions">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="howHeard">How did you hear about TRC International University?</label>
+                            <select id="howHeard" name="howHeard">
+                                <option value="">Select Option</option>
+                                <option value="friend">Friend/Relative</option>
+                                <option value="school">School/Teacher</option>
+                                <option value="media">Social Media/Internet</option>
+                                <option value="newspaper">Newspaper/Radio/TV</option>
+                                <option value="agent">Education Agent</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comments">Additional Comments or Special Requirements</label>
+                            <textarea id="comments" name="comments" rows="4"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Declaration -->
+                    <div class="form-section">
+                        <h3 class="form-section-title"><i class="fas fa-file-signature"></i> Declaration</h3>
+                        
+                        <div class="form-group">
+                            <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px;">
+                                <p style="margin-bottom: 15px;">I hereby declare that:</p>
+                                <ol style="margin-left: 20px; margin-bottom: 20px;">
+                                    <li>The information provided in this application is true and complete to the best of my knowledge.</li>
+                                    <li>I have read and understood the admission requirements of TRC International University.</li>
+                                    <li>I agree to pay the required tuition and fees if admitted.</li>
+                                    <li>I understand that the registration fee of UGX 50,000 is non-refundable.</li>
+                                    <li>I authorize the university to verify the information provided in this application.</li>
+                                </ol>
+                                
+                                <div class="form-group">
+                                    <label style="display: flex; align-items: center; font-weight: normal;">
+                                        <input type="checkbox" id="declaration" name="declaration" required style="width: auto; margin-right: 10px;">
+                                        I agree to the above declaration and accept the terms and conditions *
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Registration Form
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 20px; color: #666;">
+                        <i class="fas fa-info-circle"></i> After submission, your unique student registration number will be sent to your email within 24-48 hours.
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TRC International University</h3>
+                    <p>Excellence in Global Education Since 2005</p>
+                    <p>Kampala, Uganda</p>
+                    <p>Email: info@trc.ac.ug</p>
+                    <p>Phone: +256 703959773</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="#programs">Academic Programs</a>
+                    <a href="#admissions">Admissions</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Admissions Office</h3>
+                    <p>Open: Monday - Friday</p>
+                    <p>Time: 8:00 AM - 5:00 PM</p>
+                    <p>Saturday: 9:00 AM - 1:00 PM</p>
+                    <p>Tel: +256 703959773</p>
+                    <p>Email: admissions@trc.ac.ug</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 TRC International University. All rights reserved.</p>
+                <p>This form is for demonstration purposes. For actual registration, please visit our official admissions office.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Form Handling -->
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Basic validation
+            const requiredFields = this.querySelectorAll('[required]');
+            let valid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    valid = false;
+                    field.style.borderColor = '#e74c3c';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (!valid) {
+                alert('Please fill in all required fields marked with *.');
+                return;
+            }
+            
+            // Check declaration checkbox
+            const declaration = document.getElementById('declaration');
+            if (!declaration.checked) {
+                alert('You must accept the declaration to submit the form.');
+                return;
+            }
+            
+            // Get form data
+            const formData = new FormData(this);
+            const studentEmail = document.getElementById('email').value;
+            const studentName = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
+            
+            // In a real implementation, this would be sent to a server
+            // For demo purposes, we'll simulate submission
+            
+            // Generate a unique student ID (in reality, this would be done on the server)
+            const uniqueId = 'TRC' + new Date().getFullYear() + '-' + 
+                            Math.floor(1000 + Math.random() * 9000);
+            
+            // Display success message with simulated email
+            alert(`Registration Submitted Successfully!\n\nThank you ${studentName}. Your application has been received.\n\nA unique student registration number (${uniqueId}) will be sent to ${studentEmail} within 24-48 hours after payment verification.\n\nPlease keep your transaction ID (${document.getElementById('transactionId').value}) for reference.`);
+            
+            // In a real implementation, the form would be submitted to a server
+            // and the server would send the email with the registration number
+            
+            // Reset form after successful submission (optional)
+            // this.reset();
+            
+            // For actual implementation, you would need:
+            // 1. A server-side script (PHP, Node.js, Python) to process the form
+            // 2. Integration with a payment verification system
+            // 3. An email service (SMTP, SendGrid, etc.) to send automated emails
+            // 4. Database storage for registration records
+        });
+        
+        // Add some interactivity to form fields
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.style.backgroundColor = '#f8f9fa';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.style.backgroundColor = '';
+            });
+        });
+        
+        // Generate a suggested student code based on name
+        document.getElementById('firstName').addEventListener('blur', function() {
+            const firstName = this.value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const year = new Date().getFullYear();
+            
+            if (firstName && lastName) {
+                const suggestedCode = `TRC${year}-${firstName.charAt(0).toUpperCase()}${lastName.charAt(0).toUpperCase()}${Math.floor(10 + Math.random() * 90)}`;
+                document.getElementById('studentCode').value = suggestedCode;
+            }
+        });
+    </script>
+</body>
+</html>
